@@ -64,6 +64,192 @@ while True:
     print (stuff.capitalize())
 """
 
+"""
+while True:
+     value = input('Integer, please [q to quit]: ')
+     if value == 'q':
+          break
+     number = int(value)
+     if number % 2 == 0:
+          continue
+     print(number, 'squared is', number*number)
+"""
 
+"""
+numbers = [1,3,5]
+position=0
+while position < len(numbers):
+     number = numbers[position]
+     if number % 2 ==0:
+          print('Found even number',number)
+     position +=1
+else:
+     print('No even number found')
+"""
+
+"""
+rabbits = ['Flopsy', 'Mopsy', 'Cottonial', 'Peter']
+current = 0
+while current < len(rabbits):
+     print(rabbits[current])
+     current +=1
+"""
+
+"""
+rabbits = ['Flopsy', 'Mopsy', 'Cottonial', 'Peter']
+for rabbit in rabbits:
+     print(rabbit)
+"""
+
+"""
+word = 'cat'
+for letter in word:
+     print(letter)
+"""
+
+
+accusation = {'room': 'ballroom', 'weapon': 'lead pipe',
+              'person': 'Col.Mustard'}
+
+"""
+for card in accusation:
+     print(card)
+
+for value in accusation.values():
+     print(value)
+"""
+
+"""
+for item in accusation.items():
+     print(item)
+"""
+
+"""
+for card, contents in accusation.items():
+     print('Card', card, 'has the contents', contents)
+"""
+
+"""
+cheeses = []
+for cheese in cheeses:
+     print('This shop has some lovely', cheese)
+     break
+else:
+     print('This is not much of a cheese shop, is it?')
+"""
+
+"""
+cheeses = []
+found_one = False
+for cheese in cheeses:
+     found_one = True
+     print('This shop has some lovely', cheese)
+     break
+if not found_one:
+     print('This is not a much of cheese shop, is it?')
+"""
+
+"""
+days = ['Monday', 'Tuesday', 'Wednesday']
+fruits = ['banana', 'orange', 'peach']
+drinks = ['coffee', 'tea', 'beer']
+desserts = ['tiramisu', 'ice cream', 'pie', 'pudding']
+for day, fruit, drink, dessert in zip(days, fruits, drinks, desserts):
+     print(day, ': drink', drink, '- eat', fruit, '- enjoy', dessert)
+"""
+
+"""
+english = 'Monday', 'Tuesday', 'Wednesday'
+french = 'Lundi', 'Mardi', 'Mercedi'
+
+print(list(zip(english, french)))
+print(dict(zip(english, french)))
+"""
+
+"""
+for x in range(0,3,):
+     print(x)
+
+print(list(range(0,3)))
+
+for x in range (2, -1, -1):
+     print(x)
+
+
+print(list(range(2, -1, -1)))
+
+print(list(range(0, 11, 2)))
+"""
+
+"""
+number_list = []
+for number in range(1,6):
+     number_list.append(number)
+print(number_list)
+"""
+
+"""
+number_list = list(range(1,6))
+print(number_list)
+"""
+
+"""
+number_list = [number for number in range(1,6)]
+print(number_list)
+"""
+
+"""
+number_list = [number-1 for number in range(1,6)]
+print(number_list)
+"""
+
+"""
+a_list = [number for number in range(1,6) if number % 2 == 1]
+print(a_list)
+"""
+
+"""
+a_list =[]
+for number in range(1,6):
+     if number % 2 ==1:
+          a_list.append(number)
+print(a_list)
+"""
+
+
+"""
+rows = range(1,4)
+cols = range(1,3)
+for row in rows:
+     for col in cols:
+          print(row, col)
+"""
+
+"""
+rows = range(1,4)
+cols = range(1,3)
+cells = [(row, col) for row in rows for col in cols]
+for cell in cells:
+     print(cell)
+
+for row, col in cells:
+     print(row, col)
+"""
+
+word = 'letters'
+letter_counts = {letter: word.count(letter) for letter in word}
+print(letter_counts)
+
+lettet_counts = {letter: word.count(letter) for letter in set(word)}
+print(letter_counts)
+
+
+
+
+
+
+
+                   
+     
 
 
