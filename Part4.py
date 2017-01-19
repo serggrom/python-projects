@@ -236,16 +236,71 @@ for row, col in cells:
      print(row, col)
 """
 
+"""
 word = 'letters'
 letter_counts = {letter: word.count(letter) for letter in word}
 print(letter_counts)
 
 lettet_counts = {letter: word.count(letter) for letter in set(word)}
 print(letter_counts)
+"""
+
+"""
+def answer():
+    print(42)
+answer()
 
 
+def run_something(func):
+    func()
+run_something(answer)
+"""
+
+"""
+def add_args(arg1, arg2):
+    print(arg1 + arg2)
+
+print(type(add_args))
+
+def run_something_with_args(func, arg1, arg2):
+    func(arg1, arg2)
+
+run_something_with_args(add_args, 5, 9)
+"""
+
+"""
+def sum_args(*args):
+    return sum(args)
+
+def run_with_positional_args(func, *args):
+    return func(*args)
+
+print(run_with_positional_args(sum_args, 1, 2, 3, 4))
+"""
+
+"""
+def outer(a,b):
+    def inner(c,d):
+        return  c + d
+    return inner(a,b)
+
+print(outer(4,7))
+"""
 
 
+"""
+def knigths(saying):
+    def inner(quote):
+        return "We are the knights who say: '%s'" % quote
+    return inner(saying)
+print(knigths('Ni!'))
+"""
+
+
+def knights2(saying):
+    def inner2():
+        return "We are the knights who say: '%s'" % saying
+    return inner2
 
 
 
