@@ -423,10 +423,158 @@ print('globals:', globals())
 """
 
 
+"""
+def amazing():
+    '''This is the amazing function.
+    Wang to see it again?'''
+    print('This function is named:', amazing.__name__)
+    print('And its docstring is:', amazing.__doc__)
+
+amazing()
+"""
+
+"""
+short_list = [1, 2, 3]
+
+try:
+    short_list[position]
+except:
+    print('Need a position between 0 and', len(short_list)-1, ' but got', position)
+
+while True:
+    value = input('Position [q to quit]? ')
+    if value == 'q':
+        break
+    try:
+        position = int(value)
+        print(short_list[position])
+    except IndexError as err:
+        print('Bad index:', position)
+    except BaseException as other:
+        print('Something else broke:', other)
+"""
+
+"""
+class UppercaseException(Exception):
+    pass
+
+words = ['eeenie', 'meenie', 'miny', 'MO']
+for word in words:
+    if word.isupper():
+        raise UppercaseException(word)
+"""
 
 
+"""
+guess_me = 7
+if guess_me == 7:
+    print('just right')
+elif guess_me < 7:
+    print('too low')
+else:
+    print('too high')
+"""
+
+"""
+guess_me = 7
+start = 1
+while True:
+    if start < guess_me:
+        print('too low')
+    elif start == guess_me:
+        print('found it!')
+    else:
+        print('oops')
+        break
+    start += 1
+"""
+
+"""
+short_list = [3, 2, 1, 0]
+for a in short_list:
+    print('Number:', a)
+"""
+
+"""
+short_list = [number for number in range(10)]
+print(short_list)
 
 
+square_dict = {number: number**2 for number in range(10)}
+print(square_dict)
+
+
+odd = {number for number in range(10) if number % 2 == 0}
+print(odd)
+
+def my_gen(a = 0):
+    for i in range(10):
+        a += 1
+    yield 'Got'
+    yield  a
+
+ranger = my_gen()
+
+for x in ranger:
+    print(x)
+"""
+
+
+"""
+def goods():
+    a = ['Harry', 'Ron', 'Hermione']
+    return a
+
+print(goods())
+"""
+
+
+"""
+def get_odds():
+    for i in range(10):
+        if i % 2 == 0:
+            yield i
+
+odds = get_odds()
+
+for x in odds:
+    print(x)
+
+
+def test(func):
+    def new_func(*args, **kwargs):
+        print('Start func:', func.__name__)
+        result = func(*args, **kwargs)
+        print('Result:', result)
+        print('End')
+        return result
+
+    return new_func
+
+@test
+def add_ints(a, b):
+    return a + b
+
+add_ints(2, 1)
+"""
+
+
+"""
+class OopsException(Exception):
+    pass
+
+
+short_list = list(range(10))
+print(short_list)
+
+for i in short_list:
+    if i == 9:
+        raise OopsException(short_list[i])
+"""
+
+titles = ['Creature of Habit', 'Crewel Fate']
+plots = ['A nun turns into a monster', 'A hauted yarn shop']
+print(dict(zip(titles,plots)))
 
 
 
