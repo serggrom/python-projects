@@ -332,20 +332,163 @@ duck = Duck(bill, tail)
 duck.about()
 """
 
+"""
+
+from collections import namedtuple
+Duck = namedtuple('Duck', 'bill tail')
+duck = Duck('wide orange', 'long')
+print(duck)
+
+Duck(bill='wide orange', tail='long')
+print(duck.bill)
+print(duck.tail)
+
+parts = {'bill': 'wide orange', 'tail': 'long'}
+duck2 = Duck(**parts)
+print(duck2)
+
+duck3 = duck2._replace(tail='magnificent', bill='crushing')
+print(duck3)
+
+duck_dict = {'bill': 'wide orange', 'tail': 'long'}
+print(duck_dict)
+
+
+duck_dict['color'] = 'green'
+print(duck_dict)
+
+
+#duck.color = 'green'
+"""
+
+
+class Thing():
+    pass
+
+print(Thing())
+
+example = Thing()
+
+print(example)
+
+
+class Thing2():
+    letters = 'abc'
+
+print(Thing2.letters)
+
+
+class Thing3():
+    letters = 'xyz'
+
+print(Thing3.letters)
+
+
+class Element():
+    def __init__(self, name, symbol, number):
+        self.name = name
+        self.symbol = symbol
+        self.number = number
+    def dump(self):
+        print('Element has name:', self.name, 'and symbol:', self.symbol, 'and number'
+             ':', self.number )
+    def __str__(self):
+        print('Element has name:', self.name, 'and symbol:', self.symbol, 'and number'
+             ':', self.number)
+
+hydrogen = Element('Hydrogen', 'H', 1)
+print(hydrogen.name)
+
+hydro_dict = {'name': 'Hydrogen', 'symbol': 'H', 'number':1}
+hydrogen2 = Element(hydro_dict['name'], hydro_dict['symbol'], hydro_dict['number'])
+
+print(hydrogen2.name)
+
+hydrogen3 = Element(**hydro_dict)
+print(hydrogen3.symbol)
+
+hydrogen.dump()
+#print(hydrogen2)
+
+
+class Element2():
+    def __init__(self, input_name, input_symbol, input_number):
+        self.hidden_name = input_name
+        self.hidden_symbol = input_symbol
+        self.hidden_number = input_number
+    @property
+    def name(self):
+        return self.hidden_name
+    @property
+    def symbol(self):
+        return self.hidden_symbol
+    @property
+    def number(self):
+        return self.hidden_number
 
 
 
 
+hydrogen_hidden = Element('Hydrogen2', 'H', 1)
+
+print(hydrogen_hidden.name)
+print(hydrogen_hidden.symbol)
+print(hydrogen_hidden.number)
 
 
 
+class Bear():
+    def eats(self):
+        return 'berries'
+
+class Rabbit():
+    def eats(self):
+        return 'clover'
+
+class Octothorpe():
+    def eats(self):
+        return 'campers'
+
+
+bear = Bear()
+rabbit = Rabbit()
+octothorpe = Octothorpe()
+
+print(bear.eats())
+print(rabbit.eats())
+print(octothorpe.eats())
 
 
 
+class Laser():
+    def does(self):
+        return 'desintegrate'
+
+class Claw():
+    def does(self):
+        return 'crush'
+
+class Smartphone:
+    def does(self):
+        return 'ring'
 
 
+class Robot(Laser, Claw, Smartphone):
+    def __init__(self):
+        self.laser = Laser()
+        self.claw = Claw()
+        self.smartphone = Smartphone()
+    def does(self):
+        return '''I have many attachments:
+        My laser, to %s.
+        My Claw, to %s.
+        My Smartphone, to %s''' % (
+            self.laser.does(),
+            self.claw.does(),
+            self.smartphone.does() )
 
-
+r = Robot()
+print(r.does())
 
 
 
