@@ -130,6 +130,8 @@ result2 = youPattern.match('Young Frankenstein')
 
 
 source = 'Young Frankenstein'
+
+"""
 m = re.match('You', source)
 if m:
     print(m.group())
@@ -149,38 +151,136 @@ if m:
 m = re.match('.*Frank', source)
 if m:
     print(m.group())
+"""
+
+
+"""
+m = re.findall('n', source)
+print(m)
+print('Found', len(m), 'matches')
+
+m = re.findall('n.', source)
+print(m)
+
+m = re.findall('n.?', source)
+print(m)
+"""
+
+"""
+m = re.split('n', source)
+print(m)
+
+m = re.sub('n', '?', source)
+print(m)
+"""
+
+import string
+printable = string.printable
+
+"""
+print(len(printable))
+print(printable[0:50])
+print(printable[50:])
+
+print(re.findall('\d', printable))
+
+print(re.findall('\w', printable))
+
+print(re.findall('\s', printable))
+
+x = 'abc' + '-/*' + '\u00ea' + '\u0115'
+
+print(re.findall('\w', x))
+"""
+
+
+source2 = '''I wish I may, I wish I might
+Have a dish of fish tonight.'''
+
+"""
+print(re.findall('wish', source2))
+
+print(re.findall('wish|fish', source2))
+
+print(re.findall('^wish', source2))
+
+print(re.findall('^I wish', source2))
+
+print(re.findall('fish$', source2))
+
+print(re.findall('fish tonight.$', source2))
+
+print(re.findall('fish tonight\.$', source2))
+
+print(re.findall('[wf]ish', source2))
+
+print(re.findall('[whs]+', source2))
+
+print(re.findall('ght\W', source2))
+
+print(re.findall('I (?=wish)', source2))
+
+print(re.findall('\bfish', source2))
+
+print(re.findall(r'\bfish', source2))
+"""
 
 
 
+"""
+m = re.search(r'(. dish\b).*(\bfish)', source2)
+print(m.group())
+
+m = re.search(r'(?P<DISH>. dish\b).*(?P<FISH>\bfish)', source2)
+
+print(m.group())
+print(m.groups())
+print(m.group('DISH'))
+print(m.group('FISH'))
+
+blist = [1, 2, 3, 255]
+
+the_bytes = bytes(blist)
+print(the_bytes)
+the_byte_array = bytearray(blist)
+print(the_byte_array)
+
+print(b'\x61')
+print(b'\x01abc\xff')
+
+#the_bytes[1] = 127
+
+the_byte_array[1] = 127
+
+print(the_byte_array)
+
+the_bytes = bytes(range(0, 256))
+the_byte_array = bytearray(range(0, 256))
+print(the_bytes)
+"""
 
 
+import struct
 
+valid_png_header = b'\x89PNG\r\n\x1a\n'
+data = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR' + \
+    b'\x00\x00\x00\x9a\x00\x00\x00\x8d\x08\x02\x00\x00\x00\xc0'
 
+if data[:8] == valid_png_header:
+    width, height = struct.unpack('>LL', data[16:24])
+    print('Valid PNG, width', width, 'height', height)
+else:
+    print('Not a valid PNG')
 
+print(data[16:20])
 
+print(data[20:24])
 
+print(0x9a)
+print(0x8d)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(struct.pack('>L', 154))
+print(struct.pack('>L', 141))
 
 
 
