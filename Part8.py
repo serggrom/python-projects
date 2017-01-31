@@ -1,4 +1,3 @@
-
 poem = '''There was a young lady named Bright,
 Whose speed was far faster then light:
 She started one day
@@ -11,10 +10,10 @@ print(len(poem))
 fout = open('relativity', 'wt')
 '''
 
-#fout.write(poem)
-#print(poem, file=fout)
-#print(poem, file=fout, sep='', end='')
-#fout.close()
+# fout.write(poem)
+# print(poem, file=fout)
+# print(poem, file=fout, sep='', end='')
+# fout.close()
 '''
 size = len(poem)
 offset = 0
@@ -28,7 +27,7 @@ while True:
 fout.close()
 '''
 
-#fout = open('relativity', 'xt')
+# fout = open('relativity', 'xt')
 '''
 try:
     fout = open('relativity', 'xt')
@@ -43,7 +42,6 @@ poem = fin.read()
 fin.close()
 print(len(poem))
 '''
-
 
 '''
 poem2 = ''
@@ -201,8 +199,6 @@ with open('villains', 'wt') as fout:
 print(villains)
 '''
 
-
-
 '''
 import xml.etree.ElementTree as et
 tree = et.ElementTree(file='menu.xml')
@@ -292,7 +288,6 @@ data = yaml.load(text)
 print(data['details'])
 '''
 
-
 '''
 import configparser
 cfg = configparser.ConfigParser()
@@ -301,7 +296,6 @@ print(cfg)
 cfg['french']
 cfg['french']['greeting']
 '''
-
 
 '''
 import pickle
@@ -312,7 +306,6 @@ now2 = pickle.loads(pickled)
 print(now1)
 print(now2)
 '''
-
 
 '''
 import pickle
@@ -331,8 +324,7 @@ obj2 = pickle.loads(pickled)
 print(obj2)
 '''
 
-
-
+"""
 import sqlite3
 conn = sqlite3.connect('entreprise.db')
 curs = conn.cursor()
@@ -367,65 +359,202 @@ print(rows4)
 
 curs.close()
 conn.close()
+"""
+
+
+"""
+import sqlalchemy as sa
+conn = sa.create_engine('sqlite3://')
+
+conn.execute('''CREATE TABLE zoo
+(critter VARCHAR(20) PRIMARY KEY,
+count INT,
+damage FLOAT)''')
+
+ins = 'INSERT INTO zoo (critter, count, damages) VALUES (?, ?, ?)'
+
+conn.execute(ins, 'duck', 10, 0.0)
+conn.execute(ins, 'bear', 2, 1000.0)
+conn.execute(ins, 'weasel', 1, 2000.0)
+
+rows = conn.execute('SELECT * FROM zoo')
+
+for row in rows:
+    print(row)
+"""
+
+'''
+import sqlalchemy as sa
+from sqlalchemy.ext.declarative import  declarative_base
+
+conn = sa.create_engine('sqlite:///zoo.db')
+
+Base = declarative_base()
+
+class Zoo(Base):
+    __tablename__ = 'zoo'
+    critter = sa.Column('critter', sa.String, primary_key=True)
+    count = sa.Column('count', sa.Integer)
+    damages = sa.Column('damages', sa.Float)
+    def __init__(self, critter, count, damages):
+        self.critter = critter
+        self.count = critter
+        self.damages = damages
+    def __repr__(self):
+        return "<Zoo({}, {}, {})>".format(self.critter, self.count, self.damages)
+
+Base.metadata.create_all(conn)
+
+first = Zoo('duck', 10, 0.0)
+second = Zoo('bear', 2, 1000.0)
+third = Zoo('weasel', 1, 2000.0)
+print(first)
+
+
+
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker(blind=conn)
+session = Session()
+session.add(first)
+session.add_all([second, third])
+session.commit()
+'''
+
+
+'''
+import dbm
+db = dbm.open('definitions', 'c')
+
+db['mustard'] = 'yellow'
+db['ketchup'] = 'red'
+db['pesto'] = 'green'
+
+print(len(db))
+
+db.close()
+
+db = dbm.open('definitions', 'r')
+print(db['mustard'])
+'''
+
+
+'''
+import memcache
+db = memcache.Client(['127.0.0.1:11211'])
+
+db.set('marco', 'polo')
+db.get('marco')
+db.set('ducks', 0)
+db.get('ducks')
+'''
+
+'''
+import redis
+conn = redis.Redis()
+
+conn.keys('*')
+'''
+
+
+'''
+test1 = 'This is a test of the emergency text system'
+
+fout = open('test.txt', 'wt')
+fout.write(test1)
+
+fout.close()
+
+fin = open('test.txt', 'rt')
+test2 = fin.read()
+print(test2)
+'''
+
+
+import csv
+
+
+"""
+book_csv = [{'author': 'J R R Tolkien', 'book': 'The Hobbit'},
+            {'author': 'Lyne Truss', 'book': '"Eats, Shoots & Leaves"'}]
+with open('book', 'wt') as fout:
+    cout = csv.DictWriter(fout, ['book', 'author'])
+    cout.writeheader()
+    cout.writerows(book_csv)
+
+print(book_csv)
 
 
 
 
 
+with open('book', 'rt') as fin:
+    cin = csv.DictReader(fin)
+    books = [row for row in cin]
+
+print(books)
+"""
+
+book_csv2 = [ ['The Weirdstone of Brisingame', 'Alan Garner', '1960'],
+             ['Perdido Streer Station', 'China Mieville', '2000'],
+             ['Thud!', 'Terry Pratchett', '2005'],
+              ['The Spellman Files', 'Lisa Lutz', '2007'],
+              ['Small Gods', 'Terry Pratchett', '1992']]
+with open('books', 'wt') as fout:
+    csvout = csv.writer(fout)
+    csvout.writerows(book_csv2)
+
+
+with open('books', 'rt') as fin:
+    cin = csv.DictReader(fin, fieldnames=['title', 'author', 'year'])
+    book_csv2 = [row for row in cin]
+
+print(book_csv2)
 
 
 
+with open('books', 'wt') as fout:
+    cout = csv.DictWriter(fout, ['title', 'author', 'year'])
+    cout.writeheader()
+    cout.writerows(book_csv2)
 
 
 
+import sqlite3
+
+
+conn = sqlite3.connect('books.db')
+curs = conn.cursor()
+#curs.execute('''CREATE TABLE book
+#(title TEXT,
+#author TEXT,
+#year INT)''')
+conn.commit()
 
 
 
+ins_str = 'INSERT INTO book VALUES(?, ?, ?)'
+with open('books', 'rt') as infile:
+    books = csv.DictReader(infile)
+    for book in books:
+        curs.execute(ins_str, (book['title'], book['author'], book['year']))
 
 
 
+query = 'SELECT title FROM book ORDER BY title ASC'
+for row in curs.execute(query):
+    print(row)
 
 
 
+query2 = '''SELECT title FROM book ORDER BY
+ case when (title like "The %") then substr(title,5) else title end'''
+for row in curs.execute(query2):
+    print(row[0])
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+query3 = 'SELECT * FROM book ORDER BY year'
+for row in curs.execute(query3):
+    print(row)
 
 
 
