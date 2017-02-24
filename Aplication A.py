@@ -1,12 +1,15 @@
 
 
-
+'''
 from PIL import Image
 img = Image.open('cat.jpg')
 print(img.format)
 print(img.size)
 print(img.mode)
 #img.show()
+'''
+
+
 '''
 crop = (100, 100, 200, 200)
 img2 = img.crop(crop)
@@ -33,7 +36,7 @@ print(img.size)
 print(img.format)
 '''
 
-
+'''
 import tkinter
 from PIL import  Image, ImageTk
 
@@ -42,8 +45,14 @@ img = Image.open('cat.jpg')
 tkimg = ImageTk.PhotoImage(img)
 tkinter.Label(main, image=tkimg).pack()
 main.mainloop()
+'''
 
+import matplotlib.pyplot as plot
+import matplotlib.image as image
 
+img = image.imread('cat.jpg')
+plot.imshow(img)
+plot.show()
 
 
 
